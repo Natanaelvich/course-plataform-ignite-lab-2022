@@ -25,7 +25,7 @@ model Product {
     id String @id @default(uuid())
 
     title String
-    slug  String
+    slug  String @unique
 
     created_at DateTime @default(now())
     updated_at DateTime @default(now()) @updatedAt
