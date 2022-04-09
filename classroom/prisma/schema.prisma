@@ -13,6 +13,8 @@ datasource db {
 model Student {
     id String @id @default(uuid())
 
+    auth_user_id String? @unique
+
     created_at DateTime @default(now())
     updated_at DateTime @default(now()) @updatedAt
 
