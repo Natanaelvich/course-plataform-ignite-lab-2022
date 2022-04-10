@@ -13,9 +13,11 @@ export class CoursesService {
   listAllCourses() {
     return this.prisma.course.findMany();
   }
+
   getCourseById(course_id: string) {
     return this.prisma.course.findUnique({ where: { id: course_id } });
   }
+
   async createCourse({ title }: CreateCourseParams) {
     const slug = slugify(title);
     const courseWithSameSlug = await this.prisma.course.findUnique({
