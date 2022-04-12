@@ -47,16 +47,6 @@ export class EnrollmentsService {
   }
 
   async createEnrollment({ student_id, course_id }: CreateEnrollmentParams) {
-    const course = await this.prisma.course.findUnique({
-      where: {
-        id: course_id,
-      },
-    });
-
-    if (!course) {
-      throw new Error('course not found');
-    }
-
     return await this.prisma.enrollment.create({
       data: {
         student_id,
