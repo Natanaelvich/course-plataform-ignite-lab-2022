@@ -18,6 +18,24 @@ export class CoursesService {
     return this.prisma.course.findUnique({ where: { id: course_id } });
   }
 
+  getCourseBySlug(slug: string) {
+    return this.prisma.course.findUnique({ where: { slug } });
+  }
+
+  async findOrCreate(title: string) {
+    const slug = slugify(title);
+
+    let cousrse = await this.getCourseBySlug(slug);
+
+    if (!cousrse) {
+      cousrse = await this.createCourse({
+        title,
+      });
+    }
+
+    return cousrse;
+  }
+
   async createCourse({ title }: CreateCourseParams) {
     const slug = slugify(title);
     const courseWithSameSlug = await this.prisma.course.findUnique({
