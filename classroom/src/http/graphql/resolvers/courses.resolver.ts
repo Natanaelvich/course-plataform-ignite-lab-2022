@@ -26,13 +26,9 @@ export class CoursesResolver {
     @Args('course_id') course_id: string,
     @CurrentUser() user: AuthUser,
   ) {
-    let student = await this.studentsService.getStudentsByAuthUserId(user.sub);
-
-    if (!student) {
-      student = await this.studentsService.createStudent({
-        auth_user_id: user.sub,
-      });
-    }
+    const student = await this.studentsService.findOrCreate({
+      auth_user_id: user.sub,
+    });
 
     const courseFind = await this.coursesService.getCourseById(course_id);
 

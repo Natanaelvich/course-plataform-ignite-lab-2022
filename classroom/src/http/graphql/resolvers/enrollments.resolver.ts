@@ -45,13 +45,9 @@ export class EnrollmentsResolver {
     @Args('data') data: CreateEnrollmentInput,
     @CurrentUser() user: AuthUser,
   ) {
-    let student = await this.studentsService.getStudentsByAuthUserId(user.sub);
-
-    if (!student) {
-      student = await this.studentsService.createStudent({
-        auth_user_id: user.sub,
-      });
-    }
+    const student = await this.studentsService.findOrCreate({
+      auth_user_id: user.sub,
+    });
 
     return this.enrollmentsService.createEnrollment({
       course_id: data.course_id,

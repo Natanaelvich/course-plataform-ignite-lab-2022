@@ -35,4 +35,16 @@ export class StudentsService {
       },
     });
   }
+
+  async findOrCreate({ auth_user_id }: CreateStudentParams) {
+    let student = await this.getStudentsByAuthUserId(auth_user_id);
+
+    if (!student) {
+      student = await this.createStudent({
+        auth_user_id: auth_user_id,
+      });
+    }
+
+    return student;
+  }
 }
