@@ -60,6 +60,29 @@
     ora "5.4.1"
     rxjs "6.6.7"
 
+"@apollo/core-schema@~0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@apollo/core-schema/-/core-schema-0.2.3.tgz#33a64bd2d6516009e1616e556ff0098834d4d29e"
+  integrity sha512-0MXK/rlo2Es6qp4nb5lkMcN8jz3AaXm7TiPENO9Cyyy8kIC6rTKKpHCd1yv/E5aDEIFFq44LJcL+WrLONSy7+g==
+
+"@apollo/federation-internals@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@apollo/federation-internals/-/federation-internals-2.0.0.tgz#2a731c547dfb9280cdee75eb848e9d8128b99a17"
+  integrity sha512-wEQlxG0jBZXXNAP+C/UdPoZE90R6IuQQmw9MP5FWWhsPmpyeiCz3hLp+XlW+/Ptlz3yL59hx3h45I8gOkGuvFA==
+  dependencies:
+    "@apollo/core-schema" "~0.2.3"
+    chalk "^4.1.0"
+    js-levenshtein "^1.1.6"
+
+"@apollo/federation@^0.36.0":
+  version "0.36.0"
+  resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.36.0.tgz#60a1a3347007fa35445a4cb12b141a80346c7d35"
+  integrity sha512-ajQ+xvDAHBqe8+g3rbUxv+VhL3g6J06ac0JzE7zfUuWbAAxJdYDMXAhJ3owYTM8dgy0mj2Z7mohsGNeYiQieXg==
+  dependencies:
+    "@apollo/subgraph" "^0.4.0"
+    apollo-server-types "^3.0.2"
+    lodash.xorby "^4.7.0"
+
 "@apollo/protobufjs@1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@apollo/protobufjs/-/protobufjs-1.2.2.tgz#4bd92cd7701ccaef6d517cdb75af2755f049f87c"
@@ -78,6 +101,18 @@
     "@types/long" "^4.0.0"
     "@types/node" "^10.1.0"
     long "^4.0.0"
+
+"@apollo/subgraph@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@apollo/subgraph/-/subgraph-0.4.0.tgz#4c6fc2bcc03b1715e7bcb7071f79512f3c5cee1e"
+  integrity sha512-Fg9XGaXpFP+X2J5HswIin/0ksmZShdukBtmtbMgvxJs7wfStlr+7m8gice4YSXYm/nu4td+UxUAfaqUjLYiFbQ==
+
+"@apollo/subgraph@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@apollo/subgraph/-/subgraph-2.0.0.tgz#de677b61a016784c8b87607c5935ecdaec8315d2"
+  integrity sha512-1MrNTA0caqZyl0xORLLr+T1YrCDlEVqNZpA0XyvICxnx8hRgwVLI5NJV8xl5QAZzMjiAuaFrNBjYpjbkCHtAgQ==
+  dependencies:
+    "@apollo/federation-internals" "^2.0.0"
 
 "@apollographql/apollo-tools@^0.5.3":
   version "0.5.3"
@@ -1020,7 +1055,7 @@ apollo-server-plugin-base@^3.5.2:
   dependencies:
     apollo-server-types "^3.5.2"
 
-apollo-server-types@^3.5.2:
+apollo-server-types@^3.0.2, apollo-server-types@^3.5.2:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/apollo-server-types/-/apollo-server-types-3.5.2.tgz#903d499a70b9010764cbab4d704ddb8c086aa06f"
   integrity sha512-vhcbIWsBkoNibABOym4AAPBoNDjokhjUQokKYdwZMeqrb850PMQdNJFrGyXT5onP408Ghv4O8PfgBuPQmeJhVQ==
@@ -2274,6 +2309,11 @@ jose@^2.0.5:
   dependencies:
     "@panva/asn1.js" "^1.0.0"
 
+js-levenshtein@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/js-levenshtein/-/js-levenshtein-1.1.6.tgz#c6cee58eb3550372df8deb85fad5ce66ce01d59d"
+  integrity sha512-X2BB11YZtrRqY4EnQcLX5Rh373zbK4alC1FW7D7MBhL2gtcC17cTnr6DmfHZeS0s2rTHjUTMMHfG7gO8SSdw+g==
+
 js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -2463,6 +2503,11 @@ lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
   integrity sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=
+
+lodash.xorby@^4.7.0:
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/lodash.xorby/-/lodash.xorby-4.7.0.tgz#9c19a6f9f063a6eb53dd03c1b6871799801463d7"
+  integrity sha1-nBmm+fBjputT3QPBtocXmYAUY9c=
 
 lodash@4.17.21, lodash@^4.17.19, lodash@^4.17.21:
   version "4.17.21"
