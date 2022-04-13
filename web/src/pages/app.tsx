@@ -1,19 +1,13 @@
-import { gql, useQuery } from "@apollo/client";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import React from "react";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
+import { useGetProductsQuery } from "../graphql/generated/graphql";
+import { withApollo } from "../lib/withApollo";
 
-const TEST = gql`
-  query GetProducts {
-    products {
-      title
-      slug
-    }
-  }
-`;
 const Home: React.FC = () => {
-  const { data } = useQuery(TEST);
+  const { data } = useGetProductsQuery();
+
   return (
     <div>
       <Header />
@@ -23,6 +17,12 @@ const Home: React.FC = () => {
   );
 };
 
-export const getServerSideProps = withPageAuthRequired();
+export const getServerSideProps = withPageAuthRequired({
+    getServerSideProps : async ({req, res}) => {
+        return {
+            props : {}
+        }
+    }
+});
 
-export default Home;
+export default withApollo(Home);
