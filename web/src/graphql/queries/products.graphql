@@ -1,0 +1,6 @@
+ query GetProducts {
+    products {
+      title
+      slug
+    }
+  }
