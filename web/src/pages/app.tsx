@@ -1,19 +1,18 @@
-import {  withPageAuthRequired } from "@auth0/nextjs-auth0";
-import Link from "next/link";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import React from "react";
+import { Footer } from "../components/Footer";
+import { Header } from "../components/Header";
 
 const pages: React.FC = () => {
   return (
-      <div>
-          <h1>APP</h1>
+    <div>
+      <Header />
 
-          <Link href='/api/auth/logout'>
-          <a>Logout</a>
-          </Link>
-      </div>
+      <Footer />
+    </div>
   );
 };
 
-export const getServerSideProps = withPageAuthRequired()
+export const getServerSideProps = withPageAuthRequired();
 
 export default pages;
