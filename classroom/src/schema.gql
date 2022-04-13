@@ -2,15 +2,30 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+directive @key(fields: String!, resolvable: Boolean = true) on OBJECT | INTERFACE
+
+directive @extends on OBJECT | INTERFACE
+
+directive @external on OBJECT | FIELD_DEFINITION
+
+directive @requires(fields: String!) on FIELD_DEFINITION
+
+directive @provides(fields: String!) on FIELD_DEFINITION
+
+directive @shareable on FIELD_DEFINITION | OBJECT
+
+directive @link(url: String!, import: [link__Import]) on SCHEMA
+
+directive @tag(name: String!) repeatable on FIELD_DEFINITION | OBJECT | INTERFACE | UNION | ARGUMENT_DEFINITION | SCALAR | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+directive @inaccessible on FIELD_DEFINITION | OBJECT | INTERFACE | UNION | ARGUMENT_DEFINITION | SCALAR | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+directive @override(from: String!) on FIELD_DEFINITION
+
 type Course {
   id: ID!
   title: String!
   slug: String!
-}
-
-type User {
-  auth_user_id: ID!
-  enrollments: [Enrollment!]!
 }
 
 type Enrollment {
@@ -25,6 +40,11 @@ type Enrollment {
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
+
+type User {
+  auth_user_id: ID!
+  enrollments: [Enrollment!]!
+}
 
 type Query {
   courses: [Course!]!
@@ -44,3 +64,5 @@ input CreateCourseInput {
 input CreateEnrollmentInput {
   course_id: String!
 }
+
+scalar link__Import
