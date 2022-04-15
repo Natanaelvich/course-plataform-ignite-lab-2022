@@ -37,10 +37,9 @@ type User {
 }
 
 type Query {
-  students: [User!]!
   courses: [Course!]!
   course(course_id: String!): Course!
-  enrollments: [Enrollment!]!
+  Enrollments: [Enrollment!]!
 }
 
 type Mutation {

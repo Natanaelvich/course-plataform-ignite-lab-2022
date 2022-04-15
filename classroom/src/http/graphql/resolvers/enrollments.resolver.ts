@@ -36,7 +36,7 @@ export class EnrollmentsResolver {
 
   @ResolveField(() => Student)
   student(@Parent() enrollment: Enrollment) {
-    return this.studentsService.getStudentsByAuthUserId(enrollment.student_id);
+    return this.studentsService.findByStudentId({student_id : enrollment.student_id});
   }
 
   @Mutation(() => Enrollment)
@@ -45,7 +45,7 @@ export class EnrollmentsResolver {
     @Args('data') data: CreateEnrollmentInput,
     @CurrentUser() user: AuthUser,
   ) {
-    const student = await this.studentsService.findOrCreate({
+    const student = await this.studentsService.findOrCreateByAuthUserId({
       auth_user_id: user.sub,
     });
 
