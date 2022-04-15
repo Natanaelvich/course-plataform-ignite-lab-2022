@@ -1,0 +1,13 @@
+query Me {
+  me {
+    enrollments {
+      id
+      created_at
+
+      course {
+        title
+        slug
+      }
+    }
+  }
+}

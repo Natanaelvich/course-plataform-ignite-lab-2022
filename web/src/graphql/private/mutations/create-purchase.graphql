@@ -1,0 +1,7 @@
+mutation CreatePurchase ($product_id: String!) {
+  createPurchase(data: {
+    product_id: $product_id
+  }) {
+    id
+  }
+}
