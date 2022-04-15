@@ -121,15 +121,102 @@ export type User = {
   purchases: Array<Purchase>;
 };
 
+export type CreatePurchaseMutationVariables = Exact<{
+  product_id: Scalars['String'];
+}>;
+
+
+export type CreatePurchaseMutation = { __typename?: 'Mutation', createPurchase: { __typename?: 'Purchase', id: string } };
+
+export type MeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MeQuery = { __typename?: 'Query', me: { __typename?: 'User', enrollments: Array<{ __typename?: 'Enrollment', id: string, created_at: any, course: { __typename?: 'Course', title: string, slug: string } }> } };
+
 export type GetProductsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', title: string, slug: string }> };
+export type GetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: string, title: string, slug: string }> };
 
 
+export const CreatePurchaseDocument = gql`
+    mutation CreatePurchase($product_id: String!) {
+  createPurchase(data: {product_id: $product_id}) {
+    id
+  }
+}
+    `;
+export type CreatePurchaseMutationFn = Apollo.MutationFunction<CreatePurchaseMutation, CreatePurchaseMutationVariables>;
+
+/**
+ * __useCreatePurchaseMutation__
+ *
+ * To run a mutation, you first call `useCreatePurchaseMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreatePurchaseMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createPurchaseMutation, { data, loading, error }] = useCreatePurchaseMutation({
+ *   variables: {
+ *      product_id: // value for 'product_id'
+ *   },
+ * });
+ */
+export function useCreatePurchaseMutation(baseOptions?: Apollo.MutationHookOptions<CreatePurchaseMutation, CreatePurchaseMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreatePurchaseMutation, CreatePurchaseMutationVariables>(CreatePurchaseDocument, options);
+      }
+export type CreatePurchaseMutationHookResult = ReturnType<typeof useCreatePurchaseMutation>;
+export type CreatePurchaseMutationResult = Apollo.MutationResult<CreatePurchaseMutation>;
+export type CreatePurchaseMutationOptions = Apollo.BaseMutationOptions<CreatePurchaseMutation, CreatePurchaseMutationVariables>;
+export const MeDocument = gql`
+    query Me {
+  me {
+    enrollments {
+      id
+      created_at
+      course {
+        title
+        slug
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useMeQuery__
+ *
+ * To run a query within a React component, call `useMeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMeQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useMeQuery(baseOptions?: Apollo.QueryHookOptions<MeQuery, MeQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, options);
+      }
+export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options);
+        }
+export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
+export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
+export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;
 export const GetProductsDocument = gql`
     query GetProducts {
   products {
+    id
     title
     slug
   }
