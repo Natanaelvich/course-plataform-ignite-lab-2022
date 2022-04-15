@@ -26,7 +26,7 @@ export class CoursesResolver {
     @Args('course_id') course_id: string,
     @CurrentUser() user: AuthUser,
   ) {
-    const student = await this.studentsService.findOrCreate({
+    const student = await this.studentsService.findOrCreateByAuthUserId({
       auth_user_id: user.sub,
     });
 

@@ -29,7 +29,7 @@ export class PurchaseController {
 
   @EventPattern('purchase.new-purchase')
   async purchaseCreated(@Payload('value') payload: PurchaseCreated) {
-    const student = await this.studentsService.findOrCreate({
+    const student = await this.studentsService.findOrCreateByAuthUserId({
       auth_user_id: payload.custumer.authUserId,
     });
 
