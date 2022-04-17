@@ -12,7 +12,7 @@
 
 ## 📋 Description
 
-Course plataform made with nestjs, prisma, Kafka and nextjs.
+Course plataform made with Nestjs, Prisma, GraphQl, Kafka and nextjs.
 
 ## ✨ Technologies!
 
@@ -23,6 +23,7 @@ This project was developed with the following technologies:
 - [Prisma](https://www.prisma.io/)
 - [Kafka](https://kafka.apache.org/)
 - [NextJS](https://nextjs.org/)
+- [GraphQl](https://graphql.org/)
 
 ## 🚀 How to run
 
